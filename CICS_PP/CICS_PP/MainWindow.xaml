@@ -953,6 +953,13 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  VirtualizingPanel.IsVirtualizing="True"
                          VirtualizingPanel.ScrollUnit="Pixel" >
+                    
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Focusable" Value="False"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                   
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Image Source="{Binding IsAsync=True,Converter={StaticResource tobmpcvt}}" Margin="0,-4,0,0"/>

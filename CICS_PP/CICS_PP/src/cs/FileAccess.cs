@@ -53,7 +53,8 @@ namespace CICS_PP
         /// <returns>图像文件列表</returns>  
         public static String[] GetImages(String folderPath, SearchOption searchOption)
         {
-            String filter = "\\.(bmp|gif|jpg|jpe|png|tiff|tif)$";
+            //String filter = "\\.(bmp|gif|jpg|jpe|png|tiff|tif)$";
+            String filter = "\\.(jpg)$";
             return GetFileNames(folderPath, filter, searchOption);
         }
     }
