@@ -109,7 +109,54 @@ namespace CICS_PP
    
         }
 
+        private Grid grid;
+        private Point startPoint;
+        private Boolean hasDraw;
+        private List<Rectangle> rectList = new List<Rectangle>();
 
+        private void Grid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            grid = sender as Grid;
+            startPoint = e.GetPosition(grid);
+        }
+
+        private void Grid_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Point point = e.GetPosition(grid);
+
+                if (hasDraw)
+                {
+                    hasDraw = false;
+                    this.startPoint = point;
+                }
+
+                if(Math.Abs(point.X - startPoint.X) > 10 || Math.Abs(point.Y - startPoint.Y) > 10)
+                {
+                    RectangleGeometry rectGeom = new RectangleGeometry();
+                    rectGeom.Rect = new Rect(startPoint.X - 5, startPoint.Y + 5, 10, 10);
+                    System.Windows.Shapes.Path path = new System.Windows.Shapes.Path();
+                    path.Fill = Brushes.Transparent;
+                    path.Stroke = Brushes.Red;
+                    path.StrokeThickness = 2;
+                    path.Data = rectGeom;
+                    
+                    grid.Children.Add(path);
+
+                    hasDraw = true;
+                } else
+                {
+                    hasDraw = false;
+                }
+                    
+            }
+        }
+
+        private void Grid_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 
     public sealed class UriToBitmapConverter : IValueConverter

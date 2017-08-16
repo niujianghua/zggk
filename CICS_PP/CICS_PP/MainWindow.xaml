@@ -944,14 +944,16 @@
 
 
             </Grid>
-            <Grid  Grid.Row="0" Grid.Column="1" >
+            <Grid  Grid.Row="0" Grid.Column="1" PreviewMouseLeftButtonDown="Grid_PreviewMouseLeftButtonDown"
+                   PreviewMouseMove="Grid_PreviewMouseMove" PreviewMouseLeftButtonUp="Grid_PreviewMouseLeftButtonUp">
                 <Grid.Resources>
                     <local:UriToBitmapConverter x:Key="tobmpcvt"/>
                 </Grid.Resources>
 
                 <ListBox Name="imagesListBox" ScrollViewer.IsDeferredScrollingEnabled="False"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 VirtualizingPanel.IsVirtualizing="True"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         VirtualizingPanel.IsVirtualizing="True"
                          VirtualizingPanel.ScrollUnit="Pixel" >
                     
                         <ListBox.ItemContainerStyle>
